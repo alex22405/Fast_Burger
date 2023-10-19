@@ -1,0 +1,53 @@
+{% extends "admin/index.html.twig" %}
+
+{% block title %}Liste des produits{% endblock %}
+
+{% block body %}
+{% endblock %}
+    {% block content %}
+        <div class="container">
+            <h1>Liste des produits</h1>
+            <div class="element_card">
+                    <div class="card-body">
+                        <p><a href="{{ path('admin_products_add') }}">+ Ajouter un produit</a></p>
+                    </div>
+                </div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>Nom</th>
+                        <th>Catégorie</th>
+                        <th>Prix (GNF)</th>
+                        <th>Description</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>
+                                {% if product.images is not empty %}
+                                    <img src="{{ asset('/assets/img/products/' ~ product.images.first().name) }}" alt="{{ product.productName }}">
+                                {% else %}
+                                    <p>Aucune image</p>
+                                {% endif %}
+                            </td>
+                            <td>{{ product.productName }}</td>
+                            <td>{{ product.getCategory().getName() }}</td>
+                            <td>{{ product.prix }}</td>
+                            <td>{{ product.productDescription }}</td>
+                            <td>
+                                <a href="{{ path('admin_products_edit', {id: product.id})}}" class="btn">Modifier</a>
+                                <br>
+                                <br>
+                                <a href="{{ path('admin_products_delete', {id: product.id})}}" class="btn-supp" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce produit ?')">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}

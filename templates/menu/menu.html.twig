@@ -1,0 +1,159 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Menu{% endblock %}
+{% block meta_description %}{% endblock %}
+
+{% block body %}
+    <!-- Page Header Start -->
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Menu</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+    <!-- Food Start -->
+    <div class="food">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <i class="flaticon-burger"></i>
+                        <h2>Burgers</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
+                        </p>
+                        <a href="">View Menu</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <i class="flaticon-snack"></i>
+                        <h2>Snacks</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
+                        </p>
+                        <a href="">View Menu</a>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="food-item">
+                        <i class="flaticon-cocktail"></i>
+                        <h2>Beverages</h2>
+                        <p>
+                            Lorem ipsum dolor sit amet elit. Phasel nec pretium mi. Curabit facilis ornare velit non vulputa. Aliquam metus tortor auctor quis sem.
+                        </p>
+                        <a href="">View Menu</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Food End -->
+
+
+    <!-- Menu Start -->
+    <div class="menu">
+        <div class="container">
+            <div class="section-header text-center">
+                <p>Food Menu</p>
+                <h2>Delicious Food Menu</h2>
+            </div>
+            <div class="menu-tab">
+                <ul class="nav nav-pills justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-toggle="pill" href="#burgers">Burgers</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#snacks">Snacks</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-toggle="pill" href="#beverages">Beverages</a>
+                    </li>
+                </ul>
+                <div class="tab-content">
+                    <div id="burgers" class="container tab-pane active">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12">
+                                {% for product in menuProducts %}
+                                <div class="menu-item">
+                                    <div class="menu-img">
+                                        {% if product.images is not empty %}
+                                            <img src="{{ asset('/assets/img/products/' ~ product.images.first().name) }}" alt="{{ product.productName }}">
+                                        {% else %}
+                                            <p>Aucune image disponible</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="menu-text">
+                                        <h3><span>{{ product.productName }}</span> <strong>{{ product.prix }} €
+                                            </strong></h3>
+                                        <p>{{ product.productDescription }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-block">
+                                <img src="img/menu-beverage-img.jpg" alt="Image">
+                            </div>
+                        </div>
+                    </div>  <div id="snacks" class="container tab-pane active">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12">
+                                {% for product in menuProducts %}
+                                <div class="menu-item">
+                                    <div class="menu-img">
+                                        {% if product.images is not empty %}
+                                            <img src="{{ asset('/assets/img/products/' ~ product.images.first().name) }}" alt="{{ product.productName }}">
+                                        {% else %}
+                                            <p>Aucune image disponible</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="menu-text">
+                                        <h3><span>{{ product.productName }}</span> <strong>{{ product.prix }} €
+                                            </strong></h3>
+                                        <p>{{ product.productDescription }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-block">
+                                <img src="img/menu-beverage-img.jpg" alt="Image">
+                            </div>
+                        </div>
+                    </div>  <div id="beverages" class="container tab-pane active">
+                        <div class="row">
+                            <div class="col-lg-7 col-md-12">
+                                {% for product in menuProducts %}
+                                <div class="menu-item">
+                                    <div class="menu-img">
+                                        {% if product.images is not empty %}
+                                            <img src="{{ asset('/assets/img/products/' ~ product.images.first().name) }}" alt="{{ product.productName }}">
+                                        {% else %}
+                                            <p>Aucune image disponible</p>
+                                        {% endif %}
+                                    </div>
+                                    <div class="menu-text">
+                                        <h3><span>{{ product.productName }}</span> <strong>{{ product.prix }} €
+                                            </strong></h3>
+                                        <p>{{ product.productDescription }}</p>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-5 d-none d-lg-block">
+                                <img src="img/menu-beverage-img.jpg" alt="Image">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Menu End -->
+
+
+{% endblock %}
+

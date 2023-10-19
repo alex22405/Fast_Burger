@@ -1,0 +1,520 @@
+/*  BACK - OFFICE  */
+* {
+  outline: none;
+  box-sizing: border-box;
+}
+
+@font-face {
+    font-family: 'Minerva Modern';
+    src: url('../fonts/minerva-modern/T-26 - Minerva Modern Regular.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Fira Sans';
+    src: url('../fonts/Fira_Sans/FiraSans-Thin.ttf') format('opentype');
+}
+
+
+:root {
+    --pastel_white: #f7f4e6;
+    --pastel_yellow: #fde1af;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  font-family: "Minerva Modern";
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+
+
+.hidden {
+  display: none !important;
+}
+
+.wrapper {
+  background-color: var(--pastel_white);
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.left-side {
+  width: 6rem;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  align-items: center;
+  padding: 117px 0 40px;
+  animation: left 1s var(--delay) both;
+}
+
+.left-side a {
+  width: 24px;
+  cursor: pointer;
+  color: #000;
+}
+
+.left-side a + a {
+  margin-top: 34px;
+}
+
+.left-side a:last-child {
+  margin-top: auto;
+}
+
+.left-side .active,
+.left-side a:hover {
+  color: #4255d4;
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes top {
+  0% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 25px;
+  overflow: auto;
+  padding-left: 0;
+}
+
+.header {
+  background-color: lightgray;
+  width: 100%;
+  padding: 0 30px;
+  border-radius: 6px;
+  font-size: 15px;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  color: #9b9ca7;
+  background: #1a1b3c;
+  border: none;
+  padding: 2px 12px;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.button svg {
+  margin-left: 10px;
+  width: 16px;
+}
+
+.user-box {
+    padding: 20px;
+    display: flex;
+}
+
+.user-box + .user-box {
+  margin-top: 20px;
+}
+
+.card {
+  background-color: var(--pastel_white);
+  padding: 40px;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.destination {
+  display: grid;
+  grid-gap: 10px;
+}
+
+.destination-card {
+  background-color: lightgray;
+  padding: 20px;
+  width: 100%;
+  border-radius: 6px;
+}
+
+@media screen and (max-width: 1500px) {
+  .activity {
+    width: 49%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .header
+  {
+    padding: 0;
+  }
+  .activity{
+    width: 100%;
+    border: 1px solid;
+  }
+  .user-box{
+    margin-left: 0;
+    margin-top: 20px;
+  }
+  .left-side {
+    display: none;
+  }
+  .main-container {
+    padding-left: 25px;
+  }
+  .destination {
+    margin-top: 20px;
+  }
+  .left-side {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: lightgray;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+  }
+  
+  .left-side a {
+    width: 24px;
+  }
+
+  .left-side a + a {
+    margin-top: 0;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  .destination-card + .destination-card {
+    display: none;
+  }
+}
+
+.user-box > * {
+  animation: top 1s var(--delay) both;
+}
+
+
+
+.element_card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin: 10px;
+  max-width: 300px;
+  background-color: var(--pastel_white);
+}
+
+.element_card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-header {
+  background-color: var(--pastel_yellow);
+  padding: 10px;
+  font-weight: bold;
+}
+
+.card-body {
+  padding: 10px;
+}
+
+.card-body p {
+  margin: 5px 0;
+}
+
+.card-body a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.card-body a:hover {
+  text-decoration: underline;
+}
+
+
+
+/* Tableau de la liste des produits */
+
+/* Tableau */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  border: 1px solid #ccc;
+}
+
+/* En-tête de tableau */
+.table th {
+  background-color: #f2f2f2;
+  text-align: left;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Cellules de tableau */
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* Image de produit */
+.table td img {
+  max-width: 100px;
+  height: auto;
+}
+
+/* Bouton Modifier */
+.btn {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #218838;
+}
+
+/* Styles pour les appareils mobiles */
+
+/* Redimensionnez le tableau pour les appareils mobiles */
+@media (max-width: 767px) {
+  .table {
+    width: 100%;
+    border: none;
+  }
+
+  /* Masquez les en-têtes de tableau pour les appareils mobiles */
+  .table th {
+    display: none;
+  }
+
+  /* Affichez les cellules de tableau en tant que blocs avec des bordures */
+  .table td {
+    display: block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 5px;
+    text-align: center;
+  }
+
+  /* Affichez l'image de produit à 100% de largeur */
+  .table td img {
+    max-width: 50%;
+    height: auto;
+  }
+
+  /* Affichez les boutons Modifier en blocs centrés */
+  .table td .btn-success {
+    display: block;
+    margin: 0 auto;
+  }
+
+  /* Ajoutez de la marge entre les lignes de produits */
+  .table tr {
+    margin-bottom: 50px;
+    display: block;
+  }
+}
+
+
+/*  LOGIN PAGE  */
+/* Styles pour le formulaire de connexion */
+.connexion_container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  margin: 5px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.alert {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.connexion {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+.btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-supp {
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #0056b3;
+  text-decoration: none;
+}
+
+.btn-supp:hover {
+  background-color: darkred;
+  text-decoration: none;
+}
+
+a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* Formulaire d'ajout */
+/* Styles pour le formulaire d'ajout de produit */
+form {
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+form h3 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 24px;
+  color: #333;
+}
+
+form h2 {
+  margin: 20px 0;
+  font-size: 18px;
+  color: #555;
+}
+
+form label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: #333;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"],
+form select,
+form textarea { /* Ajoutez les styles pour le textarea */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  resize: none; /* Empêche la redimension de la textarea */
+}
+
+form button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease-in-out;
+  margin-top: 10px; /* Ajoute de l'espace entre le bouton Parcourir et le bouton Ajouter */
+}
+
+form button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+form a[data-delete] {
+  color: red;
+  margin-left: 10px;
+  text-decoration: none;
+}
+
+form a[data-delete]:hover {
+  text-decoration: underline;
+  color: darkred;
+}
+
+/* Media queries pour les appareils mobiles */
+@media (max-width: 767px) {
+  form {
+    padding: 10px;
+  }
+
+  form h3 {
+    font-size: 20px;
+  }
+
+  form h2 {
+    font-size: 16px;
+  }
+
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form select,
+  form textarea {
+    padding: 8px;
+    margin-bottom: 15px;
+  }
+
+  form button[type="submit"] {
+    padding: 10px 20px;
+    margin-top: 15px;
+  }
+}

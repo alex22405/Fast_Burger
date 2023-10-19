@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="wrap cf">
+        <h1 class="projTitle">Les Merveilles de Diane</h1>
+        <div class="heading cf">
+            <h1> Panier </h1>
+            <a href="#" class="continue">Continuer mon Shopping</a>
+        </div>
+        <div class="cart">
+            <ul class="cartWrap">
+                {% for cartProduct in cartProducts %}
+                    <li class="items">
+                        <div class="infoWrap">
+                            <div class="cartSection">
+                                <img src="{{ asset('assets/img/products') }}" alt="" class="itemImg" />
+                                <h3>{{ cartProduct.product.getProductName() }}</h3>
+                                <p>
+                                    <input type="text" class="qty" value="{{ cartProduct.quantity }}" /> x {{ cartProduct.product.getPrix() }} GNF
+                                </p>
+                            </div>
+                            <div class="prodTotal cartSection">
+                                <p>{{ (cartProduct.quantity * cartProduct.product.getPrix()) }} GNF</p>
+                            </div>
+                            <div class="cartSection removeWrap">
+                                <a href="{{ path('cart_remove', {id: cartProduct.product.getId()}) }}" class="remove">x</a>
+                            </div>
+                        </div>
+                    </li>
+                {% else %}
+                    <li class="items odd">
+                        <div class="infoWrap">
+                            <p>Votre panier est vide</p>
+                        </div>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+
+        <div class="subtotal cf">
+            <ul>
+                <li class="totalRow"><span class="label">Sous-total</span><span class="value">{{ cartTotal }} GNF</span></li>
+                <li class="totalRow"><span class="label">Livraison</span><span class="value">GNF</span></li>
+                <li class="totalRow final"><span class="label">Total</span><span class="value">GNF</span></li>
+                <li class="totalRow"><a href="#" class="btn continue">Paiement</a></li>
+            </ul>
+        </div>
+    </div>
+{% endblock %}

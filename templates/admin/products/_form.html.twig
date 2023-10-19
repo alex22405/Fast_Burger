@@ -1,0 +1,29 @@
+{{ form_start(form) }}
+    {{ form_row(form.category) }}
+    {{ form_row(form.product_name) }}
+    {{ form_row(form.prix, {
+        'attr': {
+            'type': 'number'
+        }
+    }) }}
+    {{ form_row(form.product_description) }}
+    <h2>Images</h2>
+    <!-- Affichage des images si vous êtes en mode édition -->
+    {% if app.request.attributes.get('_route') == 'admin_products_edit' %}
+        {% for image in product.images %}
+            <div>
+                <img src="{{ asset('assets/img/products/mini/300x300-' ~ image.name) }}" alt="Image" style="width: 150px;">
+                <a href="{{ path('admin_products_delete_image', {id: image.id}) }}" data-delete data-token="{{ csrf_token('delete' ~ image.id) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer cette image ?')">Supprimer</a>
+            </div>
+        {% endfor %}
+    {% endif %}
+    {{ form_row(form.images) }}
+    
+    <!-- Utilisation de form_widget pour générer automatiquement le champ CSRF -->
+    {{ form_widget(form._token) }}
+
+    <!-- Afficher les erreurs du champ product_name s'il y en a -->
+    {{ form_errors(form.product_name) }}
+    
+    <button type="submit">{{ button_label|default('Ajouter') }}</button>
+{{ form_end(form) }}

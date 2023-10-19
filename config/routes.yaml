@@ -1,0 +1,17 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+admin_contact_messages:
+    path: /admin/contact/messages
+    controller: App\Controller\Admin\MessageController::showContactMessages
+mentions_legales:
+    path: /mentions-legales
+    controller: App\Controller\Conditions::mentionsLegales
+politique_confidentialite:
+    path: /politique-de-confidentialite
+    controller: App\Controller\Conditions::politiqueConfidentialite
+condition_generale_vente:
+    path: /cgv
+    controller: App\Controller\Conditions::cgv

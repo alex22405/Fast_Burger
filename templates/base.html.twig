@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}Accueil{% endblock %} - Les Merveilles de Diane
+		</title>
+		<link rel="icon" type="image/x-icon" href="{{ asset('./assets/img/favicon.ico') }}" />
+		<meta name="viewport" content="width=device-width, initial-scale=1"/>
+{#		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">#}
+{#		<link rel="stylesheet" href="{{ asset('assets/css/main.css') }}">#}
+{#		<link href="img/favicon.ico" rel="icon">#}
+
+		<!-- Google Font -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400|Nunito:600,700" rel="stylesheet">
+
+		<!-- CSS Libraries -->
+		<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet">
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+		<link href="{{ asset('assets/lib/animate/animate.min.css') }}" rel="stylesheet">
+		<link href="{{ asset ('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
+		<link href="{{ asset ('assets/lib/flaticon/font/flaticon.css') }}" rel="stylesheet">
+		<link href="{{ asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}"
+			  rel="stylesheet" />
+
+		<!-- Template Stylesheet -->
+		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+
+	</head>
+	<body>
+
+        {% include "_partials/_nav.html.twig" %}
+
+		{% block body %}{% endblock %}
+
+        {% include "_partials/_footer.html.twig" %}
+	
+    </body>
+{#		<script src="{{ asset('assets/js/gsap.min.js') }}"></script>#}
+{#		<script src="{{ asset('assets/js/scrollreveal.min.js') }}"></script>#}
+{#		<script src="{{ asset('assets/js/app.js') }}"></script>#}
+{#		<script src="{{ asset('https://code.jquery.com/jquery-3.6.0.min.js') }}"></script>#}
+{#		<script src="{{ asset('https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js') }}"></script>#}
+
+		<script src="{{ asset('https://code.jquery.com/jquery-3.4.1.min.js') }}"></script>
+		<script src="{{ asset('https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min
+		.js') }}"></script>
+		<script src="{{ asset('assets/lib/easing/easing.min.js') }}"></script>
+		<script src="{{ asset('assets/lib/owlcarousel/owl.carousel.min.js') }}"></script>
+		<script src="{{ asset('assets/lib/tempusdominus/js/moment.min.js') }}"></script>
+		<script src="{{ asset('assets/lib/tempusdominus/js/moment-timezone.min.js') }}"></script>
+		<script src="{{ asset('assets/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js') }}"></script>
+
+		<!-- Contact Javascript File -->
+		<script src="{{ asset ('assets/js/mail/jqBootstrapValidation.min.js') }}"></script>
+		<script src="{{ asset ('assets/js/mail/contact.js') }}"></script>
+
+		<!-- Template Javascript -->
+		<script src="{{ asset ('assets/js/main.js') }}"></script>
+		{% block javascripts %}{% endblock %}
+</html>

@@ -1,0 +1,36 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Messages de contact{% endblock %}
+
+{% block content %}
+    <h1>Messages</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>Email</th>
+                <th>Numéro de téléphone</th>
+                <th>Sujet</th>
+                <th>Message</th>
+                <th>Date</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for message in messages %}
+                <tr>
+                    <td>{{ message.fullName }}</td>
+                    <td>{{ message.email }}</td>
+                    <td>{{ message.number }}</td>
+                    <td>{{ message.subject }}</td>
+                    <td>{{ message.message }}</td>
+                    <td>{{ message.createdAt|date('d-m-Y H:i') }}</td>
+                    <td>
+                        <a href="{{ path('app_message_delete', {'id': message.id}) }}" class="btn-supp" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce message ?')">Supprimer</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
